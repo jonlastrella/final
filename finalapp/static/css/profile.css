@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;900&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Poppins';
+  width: 65%;
+  margin: auto;
+  background-color: #9ba0fc;
+}
+nav {
+  display: flex;
+  margin: auto;
+  padding: 50px 0;
+}
+nav ul {
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+  margin-left: auto;
+  align-items: center;
+  list-style-type: none;
+}
+nav ul li a {
+  text-decoration: none;
+}
+.profilecontainer {
+  margin: auto;
+  height: 100vh;
+  overflow-y: hidden;
+}
+.profilepicture {
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+.posts {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid whitesmoke;
+  border-left: 1px solid whitesmoke;
+  border-top: 1px solid whitesmoke;
+}
+.userName {
+  font-weight: 700;
+  /* text-align: center; */
+}
+.mood {
+  /* text-align: center; */
+  font-size: 18px;
+}
+.t {
+  width: 40%;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.blah {
+  display: flex;
+}
+.userDetails {
+  padding: 20px;
+  margin-top: 50px;
+  border-radius: 10px;
+  padding: 0 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.postavi {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+.posts h1 {
+  padding-left: 20px;
+}
+.userposts {
+  list-style-type: none;
+}
+.userposts li {
+  border-top: 1px solid whitesmoke;
+  border-bottom: 1px solid whitesmoke;
+  padding: 20px 0;
+  padding-left: 20px;
+}
+.posttitle {
+  padding-top: 50px;
+}
+.logo-container h1 {
+  margin: auto;
+  text-align: start;
+}
+.companytitle {
+  font-size: 22px;
+  font-weight: 600;
+}
+a:hover {
+  color: whitesmoke;
+  transition: all 0.2s ease-out;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+.user {
+  font-weight: 600;
+  font-size: 24px;
+}
+.userpost {
+  font-weight: 600;
+}
+.createdpost {
+  font-size: 14px;
+}
+@media only screen and (max-width: 1878px) {
+  .userDetails {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 1348px) {
+  .userDetails {
+    width: 40%;
+  }
+}

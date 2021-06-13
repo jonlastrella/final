@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editing Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/edit.css' %}">
+    <script src="https://use.fontawesome.com/8325c1870c.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="logo-container">
+            <p class="companytitle">aSocialNetWork</p>
+        </div>
+        <ul>
+            <li><a class="navlinks" href="/dashboard"><i class="fa fa-home"></i> Home</a></li>
+            <li><a class="navlinks" href="/profile/{{request.session.userId}}"><i class="fa fa-user"></i> Profile</a></li>
+            <li><a class="navlinks" href="/edit/{{request.session.userId}}"><i class="fa fa-edit"></i> Edit Profile</a></li>
+            <!-- <li><a class="navlinks" href="/friends"><i class="fa fa-users"></i> Find Friends</a></li> -->
+            <li><a class="navlinks" href="/signout"><i class="fa fa-arrow-circle-right"></i>
+                Sign Out</a></li>
+        </ul>
+    </nav>
+    <div class="forms">
+        <div class="image-container">
+            <img class="editimage" src="/static/img/edit.png" alt="">
+        </div>
+        <div class="form-container">
+            <form action="/profilePicture"enctype="multipart/form-data"method="post">
+                {% csrf_token %}
+                <h1>Upload Image</h1>
+                {% if pictures %}
+                <img class="profilepicture" src="{{pictures.file.url}}" alt="">
+                {% else %}
+                <img class="profilepicture" src="/static/img/default.png">
+                {% endif %}
+                <br>
+                <input type="file" name="image">
+                <br>
+                <button class="uploadbutton">Upload</button>
+            </form>
+            <form action="/aboutMe"method="post">
+                {% csrf_token %}
+                <h2>Edit your about me</h2>
+                <textarea name="aboutMe" id="" cols="30" rows="10">{% for user in user.abouts.all %}{{user.message}}{% endfor %}</textarea>
+                <h2>Edit Your Mood</h2>
+                <select name="mood">Mood: 
+                    <option value="Happy">Happy</option>
+                    <option value="Calm">Calm</option>
+                    <option value="Angry">Angry</option>
+                    <option value="Sad">Sad</option>
+                </select>
+                <h2>Edit Who You Want to Meet</h2>
+                <textarea name="meet" cols="30" rows="3">{% for user in user.abouts.all %}{{user.meet}}{% endfor %}</textarea>
+                <br>
+                <h2>Edit Motto</h2>
+                <textarea name="motto"cols="30" rows="2">{% for user in user.abouts.all %}{{user.motto}}{% endfor %}</textarea>
+                <br>
+                <button class="uploadbutton">Submit</button>
+            </form>
+        </div>
+    </div>
+    <!-- <form action="editMotto"method="post">
+        {%csrf_token%}
+        <textarea name="motto" placeholder="Enter motto..." cols="30" rows="2"></textarea>
+        <br>
+        <button>Save Changes</button>
+    </form> -->
+</body>
+</html>

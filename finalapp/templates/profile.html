@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <script src="https://use.fontawesome.com/8325c1870c.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="logo-container">
+            <p class="companytitle">aSocialNetWork</p>
+        </div>
+        <ul>
+            <li><a class="navlinks" href="/dashboard"><i class="fa fa-home"></i> Home</a></li>
+            <li><a class="navlinks" href="/profile/{{request.session.userId}}"><i class="fa fa-user"></i> Profile</a></li>
+            <li><a class="navlinks" href="/edit/{{request.session.userId}}"><i class="fa fa-edit"></i> Edit Profile</a></li>
+            <!-- <li><a class="navlinks" href="/friends"><i class="fa fa-users"></i> Find Friends</a></li> -->
+            <li><a class="navlinks" href="/signout"><i class="fa fa-arrow-circle-right"></i>Sign Out</a></li>
+        </ul>
+    </nav>
+    <div class="profilecontainer">
+        <div class="blah">  
+            <div class="t">
+                <img class="profilepicture" src="{{pictures.file.url}}" alt="">
+                <h1 class="userName">{{user.firstName}} {{user.lastName}}</h1>
+                {% for message in user.abouts.all %}
+                <h2 class="mood">Mood: {{message.mood}} </h2>
+                {% endfor %}
+            </div>
+            <div class="userDetails">
+                <h3>About Me</h3>
+                {% for message in user.abouts.all %}
+                <p>{{message.message}} {{message.id}}</p>
+                {% endfor %}
+                <h3>Motto</h3>
+                {% for message in user.abouts.all %}
+                <p>{{message.motto}}</p>
+                {% endfor %}
+                <h3>I would like to meet</h3>
+                {% for message in user.abouts.all %}
+                <p>{{message.meet}}</p>
+                {% endfor %}
+            </div>
+        </div>
+        <h1 class='posttitle'>All Posts</h1>
+        <div class="posts">
+            <ul class='userposts'>
+                {% for post in post %}
+                    <li>
+                        <img class="postavi"src="{{pictures.file.url}}" alt="">
+                        <p class='user'>{{post.user.firstName}} {{post.user.lastName}}</p>
+                        <p class='userpost'>{{post.post}}</p>
+                        <p class=createdpost>{{post.created_at}}</p>
+                    </li>
+                {% endfor %}
+                </div>
+            </ul>
+            <!-- <a href="/dashboard">Go to dashboard</a> -->
+        </div>
+    </div>
+</body>
+</html>

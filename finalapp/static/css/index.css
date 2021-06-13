@@ -1,0 +1,117 @@
+.errorMessage {
+  color: red;
+  width: 95%;
+  border-radius: 5px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: bold;
+  background-color: whitesmoke;
+  opacity: 0.6;
+  padding: 10px;
+}
+.out {
+  display: flex;
+  background-color: lightblue;
+  /* background: url('/static/img/juggle.png'); */
+  background-repeat: no-repeat;
+  background-size: 100vw 100vh;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+.blah {
+  width: 30%;
+  height: 50%;
+}
+.signinform {
+  background: #c6ffdd;
+  background: -webkit-linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
+  background: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+  height: 37.7%;
+  justify-content: center;
+  border-radius: 5%;
+  z-index: 1;
+  margin-right: -35px;
+  width: 22%;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  background: url('/static/img/juggle.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.signupform {
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+  border-top-right-radius: 5%;
+  border-bottom-right-radius: 5%;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  width: 25%;
+  background: url('/static/img/signup.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.inputbox {
+  border-radius: 7px;
+  padding: 10px;
+  border: none;
+  opacity: 0.6;
+  color: dodgerblue;
+  font-weight: bold;
+}
+.inputboxp {
+  border-radius: 7px;
+  padding: 10px;
+  border: none;
+  margin: 0 0 10px 0;
+  opacity: 0.6;
+  color: dodgerblue;
+  font-weight: bold;
+}
+.signup {
+  padding: 17px 0;
+  background-color: rgb(83, 221, 83);
+  border-radius: 7px;
+  border: none;
+  color: whitesmoke;
+  font-weight: bold;
+}
+.signup:hover {
+  opacity: 0.7;
+}
+.signin {
+  padding: 17px 0;
+  background-color: transparent;
+  border: 1px solid gray;
+  border-radius: 7px;
+  font-weight: bold;
+  background-color: dodgerblue;
+  color: whitesmoke;
+}
+.signin:hover {
+  opacity: 0.7;
+}
+.labels {
+  font-weight: bold;
+  padding: 10px 0;
+}
+.socialtitle {
+  border: 1px solid black;
+  width: fit-content;
+  padding: 15px 10px;
+}
+.transparent {
+  /* border: 1px solid black; */
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  backdrop-filter: blur(2px);
+  border-radius: 10px;
+}

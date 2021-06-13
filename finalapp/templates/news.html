@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/news.css' %}">
+    <!-- <script src="{% static 'js/news.js' %}"></script> -->
+</head>
+<body>
+    <h1>News</h1>
+    <a href="/dashboard">Home</a>
+
+    <h2>Filter By</h2>
+    <form action="/news"method="post">
+        {% csrf_token %}
+        <label for="country">Country</label>
+        <br>
+        <select name="countries" id="">
+            <option value="us">United States</option>
+            <option value="ae">United Arab Emirates</option>
+            <option value="jp">Japan</option>
+            <option value="cn">China</option>
+            <option value="de">Germany</option>
+            <option value="gb">United Kingdom</option>
+            <option value="ru">Russia</option>
+        </select>
+        <br><br><br>
+        <button>Filter</button>
+    </form>
+    <div class="usNews">
+        <h1>Top Headlines</h1>
+        <ul>
+            {% for i in news %}
+            <img src="{{i.urlToImage}}" alt="">
+            <h3><a href="{{i.url}}">{{i.title}}</a></h3>
+            {% endfor %}
+        </ul>
+    </div>
+    
+</body>
+</html>

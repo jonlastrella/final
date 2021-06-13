@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <div class="out">
+        <form action="/signin"method="post"class="signinform">
+            {%csrf_token%}
+            <div class="transparent">
+                <h2>Already have an account?</h2>
+                <input class="inputboxp" type="text" name="email" placeholder="Email address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" oninvalid="this.setCustomValidity('Please enter a valid email address.') "oninput class="inputbox"="this.setCustomValidity('')">
+                <input class="inputboxp" type="password" name="password" placeholder="Password">
+                {% for message in messages %}
+                <p class = errorMessage>{{message}}</p>
+                {% endfor %}
+                <button class="signin">Sign In</button>
+            </div>
+        </form>
+        <form action="/signup"method="post"class="signupform">
+            {% csrf_token %}
+            <h1>Sign Up</h1>
+            <label class="labels" for="firstName">First Name</label class="labels">
+            <input class="inputbox" type="text" name="firstName" placeholder="Enter your first name">
+            <label class="labels" for="lastName">Last Name</label class="labels">
+            <input class="inputbox" type="text" name="lastName" placeholder="Enter your last name">
+            <label class="labels" for="email">Email address</label class="labels">
+            <input class="inputbox" type="email" name="email" placeholder="Enter your email address" >
+            <label class="labels" for="password">Set password</label class="labels">
+            <input class="inputboxp" type="password" name="password" placeholder="Enter password">
+            <input class="inputboxp" type="password" name="confirm" placeholder="Confirm password">
+            <button class="signup">Sign Up</button>
+        </form>
+    </div>
+</body>
+</html>

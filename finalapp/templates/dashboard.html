@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <script src="https://use.fontawesome.com/8325c1870c.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{% static 'js/news.js' %}"></script> -->
+</head>
+<body>
+    <div class="outer">
+        <nav>
+            <div class="logo-container">
+                <p class="companytitle">aSocialNetWork</p>
+            </div>
+            <ul>
+                <li><a class="navlinks" href="/dashboard"><i class="fa fa-home"></i> Home</a></li>
+                <li><a class="navlinks" href="/profile/{{request.session.userId}}"><i class="fa fa-user"></i> Profile</a></li>
+                <li><a class="navlinks" href="/edit/{{request.session.userId}}"><i class="fa fa-edit"></i> Edit Profile</a></li>
+                <!-- <li><a class="navlinks" href="/friends"><i class="fa fa-users"></i> Find Friends</a></li> -->
+                <li><a class="navlinks" href="/signout"><i class="fa fa-arrow-circle-right"></i>
+                    Sign Out</a></li>
+            </ul>
+        </nav>
+        <div class="feedcontainer"> 
+            <div class="profileavi">
+                <h1>{{request.session.firstName}} {{request.session.lastName}}</h1>
+                {% if pictures %}
+                <img class="profilepic" src="{{pictures.file.url}}" alt="">
+                {% else %}
+                <img class="profilepic" src="/static/img/default.png" alt="">
+                {% endif %}
+                {% for i in user.abouts.all %}
+                <p class="moodtitle">Mood: {{i.mood}}</p>
+                {% endfor %}
+            </div>  
+            <div class="profile">
+                <!-- <img class="profilepic"src="{{j.file}}" alt=""> -->
+                <p class="title">About</p>
+                {% for i in user.abouts.all %}
+                <p class="content">{{i.message}}</p>
+                {% endfor %}
+                <p class="title">Who I want to meet</p>
+                {% for i in user.abouts.all %}
+                <p class="content">{{i.meet}}</p>
+                {% endfor %}
+                <p class="title">Motto</p>
+                {% for i in user.abouts.all %}
+                <p class="content">{{i.motto}}</p>
+                {% endfor %}
+            </div>
+            <form action="/postToProfile"method="post"class="feedpost">
+                {% csrf_token %}
+                <h1>Post</h1>
+                <textarea class="tweet" name="post" placeholder="Tell the world something" cols="30" rows="10"></textarea>
+                <button class="postbutton">Post</button>
+            </form>
+            <div class="mainfeed">
+                <h1>Comments</h1>
+                <ul>{% for post in posts %}
+                    <a class="userlinks" href="/profile/{{post.user.id}}">{{post.user.firstName}} {{post.user.lastName}}</a>
+                    <h4>{{post.post}}</h4>
+                    <h6>{{post.created_at}}</h6>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <h1 class="newsheading">News Feed</h1>
+        <div class="news">
+            {% for i in news %}
+            <img class="newspictures"src="{{i.urlToImage}}" alt="">
+            <p class="newstitle"><a href="{{i.url}}">{{i.title}}</a></p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html> 

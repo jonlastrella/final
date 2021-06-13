@@ -1,0 +1,16 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  color: blue;
+}
+.usNews ul {
+  overflow: scroll;
+  width: 500px;
+  height: 500px;
+}
+.usNews img {
+  width: 250px;
+  height: 250px;
+}
